@@ -12,7 +12,7 @@ RUN mkdir /tmp/downloads && \
     bash "Anaconda${PYTHON}-${ANACONDA}-Linux-x86_64.sh" -b && \
     echo "export PATH=\"$HOME/anaconda${PYTHON}/bin:\$PATH\"" >> ~/.bashrc
 
-ENV PATH /root/anaconda2/bin:$PATH
+ENV PATH /root/anaconda${PYTHON}/bin:$PATH
 
 RUN conda install -y bcolz && conda upgrade -y --all
 RUN pip install theano && pip install keras==${KERAS}
