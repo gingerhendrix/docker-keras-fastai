@@ -16,6 +16,7 @@ ENV PATH /root/anaconda${PYTHON}/bin:$PATH
 
 RUN conda install -y bcolz && conda upgrade -y --all
 RUN pip install theano && pip install keras==${KERAS}
+RUN conda install pytorch torchvision cuda80 -c soumith
 
 ADD keras.json /root/.keras/keras.json
 ADD theanorc /roo/.theanorc
