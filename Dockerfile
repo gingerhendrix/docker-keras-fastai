@@ -19,7 +19,7 @@ RUN pip install theano && pip install keras==${KERAS}
 RUN conda install pytorch torchvision cuda80 -c soumith
 
 ADD keras.json /root/.keras/keras.json
-ADD theanorc /roo/.theanorc
+ADD theanorc /root/.theanorc
 # default password: keras
 # ENV PASSWD=""
 
