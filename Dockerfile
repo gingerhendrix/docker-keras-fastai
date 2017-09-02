@@ -15,9 +15,9 @@ RUN mkdir /tmp/downloads && \
 ENV PATH /root/anaconda${PYTHON}/bin:$PATH
 
 RUN conda install -y bcolz && conda upgrade -y --all
-RUN conda install pygpu pydot
+RUN conda install pygpu
 RUN conda install pytorch torchvision cuda80 -c soumith
-RUN pip install six
+RUN pip install six pydot
 RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
 RUN pip install keras==${KERAS}
 
