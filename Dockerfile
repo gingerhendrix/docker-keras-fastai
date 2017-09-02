@@ -2,9 +2,9 @@ FROM nvidia/cuda:8.0-cudnn5-devel
 
 ARG PYTHON=3
 ARG ANACONDA=4.4.0
-ARG KERAS=2.0.6
+ARG KERAS=2.0.7
 
-RUN apt-get update && apt-get install -y wget git unzip p7zip-full
+RUN apt-get update && apt-get install -y wget git unzip p7zip-full graphviz
 
 RUN mkdir /tmp/downloads && \
     cd /tmp/downloads && \
@@ -15,8 +15,11 @@ RUN mkdir /tmp/downloads && \
 ENV PATH /root/anaconda${PYTHON}/bin:$PATH
 
 RUN conda install -y bcolz && conda upgrade -y --all
-RUN pip install theano && pip install keras==${KERAS}
+RUN conda install pygpu pydot
 RUN conda install pytorch torchvision cuda80 -c soumith
+RUN pip install six
+RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
+RUN pip install keras==${KERAS}
 
 ADD keras.json /root/.keras/keras.json
 ADD theanorc /root/.theanorc

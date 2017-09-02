@@ -1,7 +1,10 @@
 [global]
 floatX = float32
-optimizer=None
-device = gpu
+device = cuda
+warn_float64 = warn
 
 [cuda]
 root = /usr/local/cuda
+
+[dnn]
+enabled = True
